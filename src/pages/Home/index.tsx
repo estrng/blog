@@ -1,9 +1,14 @@
 import React from "react";
+import { InfoCard } from "../../components/InfoCard";
 
 import { Container } from "./styles";
 
 const Home: React.FC = () => {
-  return <h1>HOME</h1>;
+  return (
+    <Container>
+      <InfoCard />
+    </Container>
+  );
 };
 
 export default Home;

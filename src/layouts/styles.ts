@@ -7,5 +7,5 @@ export const Container = styled.div`
   justify-content: space-between;
   height: 100vh;
   width: 100vw;
-  background-color: ${(props) => props.theme.colors.background};
+  background: #071422;
 `;
