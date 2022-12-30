@@ -11,34 +11,6 @@ import { Container } from "./styles";
 const Home: React.FC = () => {
   const { githubIssueData } = useGithubIssueData();
 
-  const fakeIssue = [
-    {
-      id: 1,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-    {
-      id: 2,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-    {
-      id: 3,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-
-    {
-      id: 4,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-  ];
-
   return (
     <Container>
       <InfoCard />
@@ -46,7 +18,7 @@ const Home: React.FC = () => {
         title="Publicações"
         subTitle={`${githubIssueData.length} publicações`}
       />
-      <IssueList issues={fakeIssue} />
+      <IssueList issues={githubIssueData} />
     </Container>
   );
 };

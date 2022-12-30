@@ -1,18 +1,32 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const IssueCardContainer = styled.div`
+export const IssueCardContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 460px;
   height: 260px;
   padding: 32px;
   gap: 20px;
 
   background: #112131;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
   border-radius: 10px;
+  color: #fff;
 
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
 `;
 
 export const UpperContent = styled.div`

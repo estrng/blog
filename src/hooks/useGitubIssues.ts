@@ -35,6 +35,16 @@ interface Reactions {
   eyes: number;
 }
 
+interface Labels {
+  id: number;
+  node_id: string;
+  url: string;
+  name: string;
+  color: string;
+  default: false;
+  description: string;
+}
+
 export interface GithubIssueData {
   url: string;
   repository_url: string;
@@ -47,7 +57,7 @@ export interface GithubIssueData {
   number: 1;
   title: string;
   user: User;
-  labels: Array<any>;
+  labels: Array<Labels>;
   state: string;
   locked: false;
   assignee: unknown;
