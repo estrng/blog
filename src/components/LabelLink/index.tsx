@@ -4,13 +4,18 @@ import link from "../../assets/link.svg";
 
 interface LabeLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   label: string;
+  icon?: boolean;
 }
 
-export const LabelLink: React.FC<LabeLinkProps> = ({ label, ...props }) => {
+export const LabelLink: React.FC<LabeLinkProps> = ({
+  label,
+  icon = false,
+  ...props
+}) => {
   return (
     <Container {...props}>
       <Label>{label}</Label>
-      <Icon src={link} />
+      {icon && <Icon src={link} />}
     </Container>
   );
 };

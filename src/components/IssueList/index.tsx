@@ -19,7 +19,13 @@ const IssueList: React.FC<IssueListProps> = ({ issues }) => {
           labels: issue.labels,
         };
 
-        return <IssueCard to={`/post`} key={issue.id} issue={issueData} />;
+        return (
+          <IssueCard
+            to={`/post/${issue.number}`}
+            key={issue.id}
+            issue={issueData}
+          />
+        );
       })}
     </Container>
   );

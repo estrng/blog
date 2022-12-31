@@ -10,7 +10,7 @@ export const Routes: React.FC = () => {
     <ReactRoutes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/post/:post_id" element={<Post />} />
       </Route>
     </ReactRoutes>
   );
