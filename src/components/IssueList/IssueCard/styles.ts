@@ -57,10 +57,19 @@ export const IssueHeadTime = styled.h6`
 `;
 
 export const IssueCardBody = styled.div`
+  height: 100%;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
-export const IssueCardFooter = styled.footer``;
+export const IssueCardFooter = styled.footer`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+`;

@@ -35,7 +35,7 @@ interface Reactions {
   eyes: number;
 }
 
-interface Labels {
+export interface Labels {
   id: number;
   node_id: string;
   url: string;
