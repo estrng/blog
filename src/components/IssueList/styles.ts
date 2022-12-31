@@ -8,5 +8,5 @@ export const Container = styled.div`
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
   column-gap: 24px;
-  row-gap: 24px;
+  row-gap: 34px;
 `;

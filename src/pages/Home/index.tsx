@@ -1,8 +1,8 @@
 import React from "react";
+import GitHubUserInfo from "../../components/GitHubUserInfo";
 import { InfoCard } from "../../components/InfoCard";
 import IssueList from "../../components/IssueList";
 import Searchbar from "../../components/Searchbar";
-import { SearchInput } from "../../components/Searchbar/styles";
 import { useGithubUserData } from "../../hooks/useGithubUserData";
 import { useGithubIssueData } from "../../hooks/useGitubIssues";
 
@@ -10,43 +10,16 @@ import { Container } from "./styles";
 
 const Home: React.FC = () => {
   const { githubIssueData } = useGithubIssueData();
-
-  const fakeIssue = [
-    {
-      id: 1,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-    {
-      id: 2,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-    {
-      id: 3,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-
-    {
-      id: 4,
-      title: "Um titulo massa aqui",
-      body: "uma descrição massa e grande aqui para uma rederização",
-      date: new Date(),
-    },
-  ];
+  const { gitHubData } = useGithubUserData();
 
   return (
     <Container>
-      <InfoCard />
+      <InfoCard children={<GitHubUserInfo gitHubData={gitHubData} />} />
       <Searchbar
         title="Publicações"
         subTitle={`${githubIssueData.length} publicações`}
       />
-      <IssueList issues={fakeIssue} />
+      <IssueList issues={githubIssueData} />
     </Container>
   );
 };

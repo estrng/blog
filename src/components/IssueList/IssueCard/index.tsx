@@ -1,5 +1,8 @@
 import React from "react";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiNodedotjs, SiJavascript } from "react-icons/si";
+import { LinkProps } from "react-router-dom";
+import { formateDateDistance } from "../../../helpers/date";
+import { Labels } from "../../../hooks/useGitubIssues";
 
 import {
   IssueCardContainer,
@@ -11,27 +14,46 @@ import {
   UpperContent,
 } from "./styles";
 
-interface IssueCardProps {
-  title: string;
-  body: string;
-  date?: Date;
+interface IssueCardProps extends LinkProps {
+  issue: {
+    title: string;
+    number: number;
+    date?: string;
+    labels?: Array<Labels>;
+  };
 }
 
-const IssueCard: React.FC<IssueCardProps> = ({ title, body, date }) => {
+export const IssueCard: React.FC<IssueCardProps> = ({ issue, to }) => {
+  const { title, date, number, labels } = issue;
+
+  const getLabelIcon = (id: number, name: string, size: number) => {
+    const compArray = [
+      { name: "NodeJS", component: <SiTypescript key={id} size={size} /> },
+      { name: "TypeScript", component: <SiNodedotjs key={id} size={size} /> },
+      { name: "JavaScript", component: <SiJavascript key={id} size={size} /> },
+    ];
+
+    const index = compArray.findIndex((item) => item.name === name);
+
+    return compArray[index].component;
+  };
+
+  const hasLabels = Object.keys(labels as Labels[]).length > 0;
+
   return (
-    <IssueCardContainer>
+    <IssueCardContainer to={to}>
       <UpperContent>
         <IssueCardHeader>
-          <IssueHeadTitle>{title}</IssueHeadTitle>
-          <IssueHeadTime>{"Há 1 dia"}</IssueHeadTime>
+          <IssueHeadTitle>{`Post #${number}`}</IssueHeadTitle>
+          <IssueHeadTime>{formateDateDistance(date)}</IssueHeadTime>
         </IssueCardHeader>
-        <IssueCardBody>{body}</IssueCardBody>
+        <IssueCardBody>{title}</IssueCardBody>
       </UpperContent>
       <IssueCardFooter>
-        <SiTypescript size={26} />
+        {hasLabels
+          ? labels?.map((label) => getLabelIcon(label.id, label.name, 16))
+          : "Sem tópicos"}
       </IssueCardFooter>
     </IssueCardContainer>
   );
 };
-
-export default IssueCard;
